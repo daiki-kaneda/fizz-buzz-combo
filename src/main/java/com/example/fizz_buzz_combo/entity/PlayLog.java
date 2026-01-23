@@ -32,7 +32,7 @@ public class PlayLog extends BaseEntity<Long> {
     private User user;
 
     @OneToMany(mappedBy = "playLog", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<AppliedRule> appliedRules = new ArrayList<>();
+    private List<LogRule> logRules = new ArrayList<>();
 
     public static PlayLog create(int generatedValue, int score, User user) {
         PlayLog playLog = new PlayLog();
@@ -42,8 +42,8 @@ public class PlayLog extends BaseEntity<Long> {
         return playLog;
     }
 
-    public void addAppliedRule(GameRule gameRule) {
-        AppliedRule appliedRule = AppliedRule.create(this, gameRule);
-        appliedRules.add(appliedRule);
+    public void addLogRule(GameRule gameRule) {
+        LogRule logRule = LogRule.create(this, gameRule);
+        logRules.add(logRule);
     }
 }

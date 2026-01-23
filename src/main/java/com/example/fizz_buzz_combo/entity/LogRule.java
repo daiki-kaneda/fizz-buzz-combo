@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class AppliedRule extends BaseEntity<Long> {
+public class LogRule extends BaseEntity<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,12 +32,12 @@ public class AppliedRule extends BaseEntity<Long> {
         return id;
     }
 
-    public static AppliedRule create(
+    public static LogRule create(
             PlayLog playLog,
             GameRule gameRule) {
-        AppliedRule appliedRule = new AppliedRule();
-        appliedRule.playLog = playLog;
-        appliedRule.gameRule = gameRule;
-        return appliedRule;
+        LogRule logRule = new LogRule();
+        logRule.playLog = playLog;
+        logRule.gameRule = gameRule;
+        return logRule;
     }
 }
