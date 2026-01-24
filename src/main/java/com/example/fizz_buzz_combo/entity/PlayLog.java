@@ -34,15 +34,17 @@ public class PlayLog extends BaseEntity<Long> {
     @OneToMany(mappedBy = "playLog", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LogRule> logRules = new ArrayList<>();
 
-    public static PlayLog create(int generatedValue, int score, User user) {
+    public static PlayLog create(int generatedValue, int score, User user,List<GameRule> rules) {
         PlayLog playLog = new PlayLog();
         playLog.generatedNumber = generatedValue;
         playLog.score = score;
         playLog.user = user;
+        
+        rules.forEach(rule->playLog.addLogRule(rule));
         return playLog;
     }
 
-    public void addLogRule(GameRule gameRule) {
+    private void addLogRule(GameRule gameRule) {
         LogRule logRule = LogRule.create(this, gameRule);
         logRules.add(logRule);
     }
