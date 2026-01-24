@@ -27,3 +27,25 @@ spring:
     enabled: true
     # PostgreSQL固有の型（ENUM等）を扱うため、必要に応じて設定
     baseline-on-migrate: true
+
+game:
+    rules:
+        fizz:
+            name: fizz
+            rarity: common
+            tags:
+                - multiple
+            score: 3
+            multiple: 3
+        buzz:
+            name: buzz
+            rarity: common
+            tags:
+                - multiple
+            score: 5
+            multiple: 5
+        multiple-synergy:
+            name: multiple synergy
+            rarity: rare
+            tags:
+                - combo
