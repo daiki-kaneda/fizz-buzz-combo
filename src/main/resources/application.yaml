@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: fizz-buzz-combo
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/sudokudb?stringtype=unspecified}
+    username: ${DB_USER:user}
+    password: ${DB_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          #OAuth2 / OIDC issuer URI
+          # See README for vendor-specific examples
+          issuer-uri: ${ISSUER_URI:https://securetoken.google.com/REPLACE_ME}
+          expected-audience: ${EXPECTED_AUDIENCE:REPLACE_ME}
+
+  flyway:
+    enabled: true
+    # PostgreSQL固有の型（ENUM等）を扱うため、必要に応じて設定
+    baseline-on-migrate: true
