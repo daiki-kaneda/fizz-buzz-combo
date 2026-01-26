@@ -2,6 +2,7 @@ package com.example.fizz_buzz_combo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ public class GameRule extends BaseEntity<String>{
     @Id
     private String id;
 
+    @NotNull
     private String name;
     private String description;
 
