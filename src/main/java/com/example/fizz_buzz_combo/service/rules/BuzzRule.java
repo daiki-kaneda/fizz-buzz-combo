@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.example.fizz_buzz_combo.config.properties.GameProperties;
-import com.example.fizz_buzz_combo.service.GameRule;
 
 @Component
 public class BuzzRule extends AbstractGameRule{

@@ -1,4 +1,4 @@
-package com.example.fizz_buzz_combo.service;
+package com.example.fizz_buzz_combo.service.rules;
 
 import java.util.List;
 

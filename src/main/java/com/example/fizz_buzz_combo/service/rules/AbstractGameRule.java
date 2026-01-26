@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.example.fizz_buzz_combo.config.properties.GameProperties;
 import com.example.fizz_buzz_combo.config.properties.GameProperties.RuleConfig;
-import com.example.fizz_buzz_combo.service.GameRule;
 
 public abstract class AbstractGameRule implements GameRule {
     protected final GameProperties properties;
