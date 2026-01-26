@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
+import com.example.fizz_buzz_combo.controller.dto.GameResultDTO;
 import com.example.fizz_buzz_combo.entity.PlayLog;
 import com.example.fizz_buzz_combo.entity.User;
 import com.example.fizz_buzz_combo.repository.GameRuleQueryRepository;
@@ -22,7 +23,7 @@ public class GameService {
     private final PlayLogRepository playLogRepository;
     private final List<GameRule> gameRules;
 
-    public PlayLog start(Jwt jwt, List<String> ruleIds) {
+    public GameResultDTO start(Jwt jwt, List<String> ruleIds) {
         RandomGenerator random = RandomGenerator.getDefault();
         int generatedNumber = random.nextInt(1, 101);
         int score = (int) calculateScore(generatedNumber, ruleIds);
@@ -31,7 +32,8 @@ public class GameService {
         User user = userService.getOrCreateUser(jwt);
         PlayLog log = PlayLog.create(generatedNumber, score, user, rules);
 
-        return playLogRepository.save(log);
+        return GameResultDTO.from(
+                playLogRepository.save(log));
     }
 
     private long calculateScore(int generatedNumber, List<String> ruleIds) {
@@ -44,11 +46,11 @@ public class GameService {
         // ベーススコアの計算
         int baseScore = appliedRules
                 .stream()
-                .collect(Collectors.summingInt(rule -> rule.getScore(generatedNumber,appliedRules)));
+                .collect(Collectors.summingInt(rule -> rule.getScore(generatedNumber, appliedRules)));
         // 倍率を計算(コンボなど)
         double multiplier = appliedRules
                 .stream()
-                .map(rule -> rule.getMultiplier(generatedNumber,appliedRules))
+                .map(rule -> rule.getMultiplier(generatedNumber, appliedRules))
                 .reduce(1.0, (a, b) -> a * b);
         // 浮動小数点数を整数に四捨五入
         return Math.round(baseScore * multiplier);
