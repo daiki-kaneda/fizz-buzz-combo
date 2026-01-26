@@ -44,11 +44,11 @@ public class GameService {
         // ベーススコアの計算
         int baseScore = appliedRules
                 .stream()
-                .collect(Collectors.summingInt(rule -> rule.getScore()));
+                .collect(Collectors.summingInt(rule -> rule.getScore(generatedNumber,appliedRules)));
         // 倍率を計算(コンボなど)
         double multiplier = appliedRules
                 .stream()
-                .map(rule -> rule.getMultiplier(appliedRules))
+                .map(rule -> rule.getMultiplier(generatedNumber,appliedRules))
                 .reduce(1.0, (a, b) -> a * b);
         // 浮動小数点数を整数に四捨五入
         return Math.round(baseScore * multiplier);

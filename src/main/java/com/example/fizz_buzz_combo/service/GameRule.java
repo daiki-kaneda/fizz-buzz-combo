@@ -12,7 +12,7 @@ public interface GameRule {
     boolean shouldApply(int number);
 
     // 基本スコア
-    default int getScore(){
+    default int getScore(int number,List<GameRule> rules){
         return 0;
     }
 
@@ -22,7 +22,7 @@ public interface GameRule {
     }
 
     // 倍率（comboルールの時のみ)
-    default double getMultiplier(List<GameRule> rules){
+    default double getMultiplier(int number,List<GameRule> rules){
         return 1.0;
     }
 }

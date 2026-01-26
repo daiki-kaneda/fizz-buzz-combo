@@ -44,8 +44,28 @@ game:
                 - multiple
             score: 5
             multiple: 5
+        hoge:
+            name: hoge
+            rarity: common
+            tags:
+                - multiple
+            score: 7
+            multiple: 7
+        prime:
+            name: prime
+            rarity: uncommon
+            tags:
+                - special
+            score: 15
         multiple-synergy:
             name: multiple synergy
             rarity: rare
             tags:
                 - combo
+            multiplier: 2.0
+        digit-sum:
+            name: digit sum
+            rarity: rare
+            tags:
+                - combo
+            multiplier: 2.5

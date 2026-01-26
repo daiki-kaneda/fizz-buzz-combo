@@ -24,4 +24,13 @@ public class GameProperties {
         private Integer multiple;
         private double multiplier = 1.0;
     }
+
+    public RuleConfig getConfig(String id) {
+        RuleConfig config = this.rules.get(id);
+        if (config == null) {
+            // 設定漏れを通知
+            throw new IllegalStateException("GamePropertiesにルールID '" + id + "' の設定が見つかりません。");
+        }
+        return config;
+    }
 }
