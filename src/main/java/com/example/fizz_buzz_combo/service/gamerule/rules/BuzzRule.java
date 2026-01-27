@@ -1,20 +1,22 @@
-package com.example.fizz_buzz_combo.service.rules;
+package com.example.fizz_buzz_combo.service.gamerule.rules;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import com.example.fizz_buzz_combo.config.properties.GameProperties;
+import com.example.fizz_buzz_combo.service.gamerule.AbstractGameRule;
+import com.example.fizz_buzz_combo.service.gamerule.GameRule;
 
 @Component
-public class HogeRule extends AbstractGameRule {
-    public HogeRule(GameProperties properties){
+public class BuzzRule extends AbstractGameRule{
+    public BuzzRule(GameProperties properties){
         super(properties);
     }
 
     @Override
     public String getId() {
-        return "hoge";
+        return "buzz";
     }
 
     @Override

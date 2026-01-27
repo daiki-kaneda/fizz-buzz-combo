@@ -1,20 +1,23 @@
-package com.example.fizz_buzz_combo.service.rules;
+package com.example.fizz_buzz_combo.service.gamerule.rules;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import com.example.fizz_buzz_combo.config.properties.GameProperties;
+import com.example.fizz_buzz_combo.service.gamerule.AbstractGameRule;
+import com.example.fizz_buzz_combo.service.gamerule.GameRule;
 
 @Component
-public class BuzzRule extends AbstractGameRule{
-    public BuzzRule(GameProperties properties){
+public class FizzRule extends AbstractGameRule {
+
+    public FizzRule(GameProperties properties) {
         super(properties);
     }
 
     @Override
     public String getId() {
-        return "buzz";
+        return "fizz";
     }
 
     @Override
@@ -24,11 +27,11 @@ public class BuzzRule extends AbstractGameRule{
 
     @Override
     public Integer getMultiple() {
-        return  properties.getConfig(getId()).getMultiple();
+        return properties.getConfig(getId()).getMultiple();
     }
 
     @Override
     public boolean shouldApply(int number) {
-        return (number %  properties.getConfig(getId()).getMultiple()) == 0;
+        return (number % properties.getConfig(getId()).getMultiple()) == 0;
     }
 }

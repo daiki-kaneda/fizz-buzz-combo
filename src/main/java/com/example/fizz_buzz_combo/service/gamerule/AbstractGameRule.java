@@ -1,4 +1,4 @@
-package com.example.fizz_buzz_combo.service.rules;
+package com.example.fizz_buzz_combo.service.gamerule;
 
 import java.util.List;
 

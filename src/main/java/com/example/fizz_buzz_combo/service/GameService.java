@@ -12,7 +12,7 @@ import com.example.fizz_buzz_combo.entity.PlayLog;
 import com.example.fizz_buzz_combo.entity.User;
 import com.example.fizz_buzz_combo.repository.GameRuleQueryRepository;
 import com.example.fizz_buzz_combo.repository.PlayLogRepository;
-import com.example.fizz_buzz_combo.service.rules.GameRule;
+import com.example.fizz_buzz_combo.service.gamerule.GameRule;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.example.fizz_buzz_combo.service.rules;
+package com.example.fizz_buzz_combo.service.gamerule.rules;
 
 import java.util.List;
 import java.util.stream.IntStream;
@@ -6,6 +6,8 @@ import java.util.stream.IntStream;
 import org.springframework.stereotype.Component;
 
 import com.example.fizz_buzz_combo.config.properties.GameProperties;
+import com.example.fizz_buzz_combo.service.gamerule.AbstractGameRule;
+import com.example.fizz_buzz_combo.service.gamerule.GameRule;
 
 @Component
 public class PrimeRule extends AbstractGameRule{
