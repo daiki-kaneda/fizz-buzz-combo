@@ -27,6 +27,11 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) {
         return http
+                .authorizeHttpRequests(
+                    auth->auth
+                    .requestMatchers("/api/rankings","/api/rules").permitAll()
+                    .anyRequest().authenticated()
+                )
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
